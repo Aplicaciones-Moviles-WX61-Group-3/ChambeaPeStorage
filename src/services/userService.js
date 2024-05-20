@@ -1,4 +1,4 @@
-import pool from '../config/databases/mysql_db.js';
+import pool from '../config/databases/mysql/mysql_db.js';
 
 export class UserService {
     async getAllUsers() {

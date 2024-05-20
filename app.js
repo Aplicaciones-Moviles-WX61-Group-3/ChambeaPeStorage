@@ -13,6 +13,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use("/users", createUserRoute());
 
+app.get("/", (req, res) => {
+    res.send("User Image API to upload images to Chambeape App");
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
