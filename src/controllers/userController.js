@@ -26,7 +26,10 @@ export class UserController {
             const user = await this.userService.createUser(req.body);
             res.status(201).json(user);
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            res.status(500).json({
+                error: error.message,
+                requestBody: req.body,
+            });
         }
     }
 

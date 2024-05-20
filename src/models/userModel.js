@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     id_user: {
-        type: String,
+        type: Number,
         required: true,
     },
     imageUrls: {
@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-const UserModel = mongoose.model("User", userSchema);
+const UserModel = mongoose.model("Users", userSchema);
 
 export { UserModel };
 

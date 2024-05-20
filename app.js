@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+
 import { corsMiddleware } from "./src/middlewares/cors.js";
 import { createUserRoute } from "./src/routes/userRoute.js";
+import "./src/config/databases/mongo/mongo_db.js";
 
 dotenv.config();
 const app = express();
@@ -11,14 +13,10 @@ app.use(corsMiddleware());
 
 const PORT = process.env.PORT || 3000;
 
-app.use("/users", createUserRoute());
+app.use("/api/users", createUserRoute());
 
 app.get("/", (req, res) => {
     res.send("User Image API to upload images to Chambeape App");
-});
-
-app.post("/api/v1/upload", (req, res) => {
-    res.send("Upload image");
 });
 
 app.listen(PORT, () => {
