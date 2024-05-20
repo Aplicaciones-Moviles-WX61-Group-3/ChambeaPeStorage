@@ -1,8 +1,8 @@
-import pool from '../config/databases/mysql_db';
+import pool from '../config/databases/mysql/mysql_db.js';
 
 export class UserService {
-    static async getAllUsers() {
-        const results = await pool.query('SELECT * FROM users');
-        return results;
+    async getAllUsers() {
+        const [rows] = await pool.promise().query("SELECT * FROM users");
+        return rows;
     }
 }
