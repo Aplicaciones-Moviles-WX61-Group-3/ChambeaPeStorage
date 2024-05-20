@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import { corsMiddleware } from "./src/middlewares/cors";
+import { corsMiddleware } from "./src/middlewares/cors.js";
+import { createUserRoute } from "./src/routes/userRoute.js";
 
 dotenv.config();
 const app = express();
@@ -10,9 +11,7 @@ app.use(corsMiddleware());
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
-});
+app.use("/users", createUserRoute());
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

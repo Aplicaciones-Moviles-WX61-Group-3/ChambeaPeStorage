@@ -1,11 +1,14 @@
 import { Router } from "express";
 
-import { UserController } from "../controllers/usercontroller";
-import { UserService } from "../services/userService";
+import { UserController } from "../controllers/userController.js";
+import { UserService } from "../services/userService.js";
 
 export const createUserRoute = () => {
     const router = Router();
-    const userController = new UserController({ UserService });
+    const userService = new UserService();
+    const userController = new UserController({ userService });
 
     router.get("/", userController.getAllUsers);
+
+    return router;
 }
