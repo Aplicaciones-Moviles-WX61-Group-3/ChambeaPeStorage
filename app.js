@@ -17,6 +17,10 @@ app.get("/", (req, res) => {
     res.send("User Image API to upload images to Chambeape App");
 });
 
+app.post("/api/v1/upload", (req, res) => {
+    res.send("Upload image");
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
