@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { UserController } from "../controllers/userController.js";
 import { UserService } from "../services/userService.js";
+import { uploadSingle } from "../middlewares/uploadMiddleware.js";
 
 export const createUserRoute = () => {
     const router = Router();
@@ -12,7 +13,8 @@ export const createUserRoute = () => {
     router.get("/:id_user", userController.getUserById);
     router.post("/", userController.createUser);
     router.delete("/:id_user", userController.deleteUser);
-    router.patch("/:id_user/addImageUrl", userController.addImageUrl);
+
+    router.patch("/:id_user/addImageUrl", uploadSingle, userController.addImageUrl);
     router.patch("/:id_user/removeImageUrl", userController.removeImageUrl);
 
     return router;
