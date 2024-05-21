@@ -17,11 +17,13 @@ export const uploadImage = async (file, id_user) => {
     const blobName = "user-" + id_user + "-" + file.originalname;
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
     const data = file.buffer;
-    console.log(blobName);
+    // console.log(blobName);
 
     const blobHTTPHeaders = { blobContentDisposition: 'inline; filename=' + file.originalname };
 
     await blockBlobClient.upload(data, data.length, { blobHTTPHeaders });
+
+    // await blockBlobClient.upload(data, data.length);
 
     const blobUrl = `https://${ACCOUNT_NAME}.blob.core.windows.net/${CONTAINER_NAME}/${blobName}`;
 
