@@ -1,3 +1,5 @@
+import { uploadImage } from "../services/handlerImage.js";
+
 export class UserController {
     constructor({ userService }) {
         this.userService = userService;
@@ -44,7 +46,8 @@ export class UserController {
 
     addImageUrl = async (req, res) => {
         try {
-            const user = await this.userService.addImageUrl(req.params.id_user, req.body.imageUrl);
+            const imageUrl = await uploadImage(req.file, req.body.userId);
+            const user = await this.userService.addImageUrl(req.body.userId, imageUrl);
             res.json(user);
         } catch (error) {
             res.status(500).json({ error: error.message });
