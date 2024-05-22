@@ -46,9 +46,7 @@ export class UserController {
 
     addImageUrl = async (req, res) => {
         try {
-            const imageUrl = await uploadImage(req.file, req.body.userId);
-            console.log(imageUrl);
-            const user = await this.userService.addImageUrl(req.body.userId, imageUrl);
+            const user = await this.userService.addImageUrl(req.params.id_user, req.file);
             res.json(user);
         } catch (error) {
             res.status(500).json({ error: error.message });

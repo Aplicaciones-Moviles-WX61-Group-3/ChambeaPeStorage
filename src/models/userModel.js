@@ -19,6 +19,5 @@ export { UserModel };
   El schema de usuario debe tener la siguiente estructura:
     {
         id_user:
-        imageUrls: []
     }
  */
