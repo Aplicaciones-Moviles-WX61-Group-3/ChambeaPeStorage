@@ -25,7 +25,6 @@ export class UserService {
             throw new Error('User not found');
         }
         const removed = await this.removeAllImageUrls(id_user);
-        console.log('removed', removed);
         return UserModel.deleteOne({ id_user: id_user });
     }
 
@@ -61,14 +60,11 @@ export class UserService {
             throw new Error('Image URL not found');
         }
         const deletedImageUrl = user.imageUrls[index];
-        console.log('deletedImageUrl', deletedImageUrl);
 
         // Extraer el nombre del blob de la URL
         const blobName = deletedImageUrl.split('/').pop();
-        console.log('blobName', blobName);
         await deleteImage(blobName);
         user.imageUrls.splice(index, 1);
-        console.log(user.imageUrls);
         return user.save();
     }
 
